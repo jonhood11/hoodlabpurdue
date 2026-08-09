@@ -1,0 +1,79 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  published: Date;
+  coverImage?: string;
+}
+
+const { href, title, published, coverImage } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const date = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: published.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+}).format(published);
+---
+
+<article class:list={["news-card", { "has-cover": Boolean(coverImage) }]}>
+  {coverImage && <img src={withBase(coverImage)} alt="" loading="lazy" />}
+  <a href={withBase(href)}>
+    <time datetime={published.toISOString()}>{date}</time>
+    <h2>{title}</h2>
+  </a>
+</article>
+
+<style>
+  .news-card {
+    aspect-ratio: 1;
+    background: #858585;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .news-card img {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+
+  .news-card::after {
+    background: rgba(0, 0, 0, 0.4);
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+
+  .news-card:not(.has-cover)::after {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    padding: clamp(1rem, 3vw, 2rem);
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+  }
+
+  time {
+    color: #f4f4f4;
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    display: -webkit-box;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    margin: 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+</style>

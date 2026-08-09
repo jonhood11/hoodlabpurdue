@@ -1,0 +1,124 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const navigation = [
+  { href: "/", label: "Home" },
+  { href: "/research", label: "Research" },
+  { href: "/blog", label: "News" },
+  { href: "/team", label: "Team" },
+  { href: "/publications", label: "Publications" },
+  { href: "/theses", label: "Theses" },
+];
+
+function isCurrent(href: string) {
+  if (href === "/") return currentPath === "/";
+  if (href === "/blog") return currentPath === "/blog" || currentPath.startsWith("/post/");
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+  <a class="brand" href={withBase("/")} aria-label="Hood Lab home">
+    <img
+      src={withBase("/media/dfd400_81ee0a0d44ad4b99bea692a931e99990~mv2.png")}
+      width="1651"
+      height="406"
+      alt="Hood Lab"
+    />
+    <span>Quantum Optics Lab @ Purdue</span>
+  </a>
+  <nav aria-label="Primary navigation">
+    <ul>
+      {navigation.map((item) => (
+        <li>
+          <a href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    background: #000;
+    border-bottom: 5px solid #121517;
+    padding-top: 1rem;
+  }
+
+  .brand {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0.8rem;
+    text-decoration: none;
+    width: min(calc(100% - 36px), 696px);
+  }
+
+  .brand img {
+    height: auto;
+    width: 100%;
+  }
+
+  .brand span {
+    font-size: clamp(1.25rem, 3.4vw, 2.2rem);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin-top: 0.2rem;
+  }
+
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    align-items: center;
+    border-right: 1px solid #a2a2a2;
+    display: flex;
+    font-size: 0.84rem;
+    justify-content: center;
+    min-height: 2.1rem;
+    padding: 0.4rem;
+    text-decoration: none;
+  }
+
+  nav li:last-child a {
+    border-right: 0;
+  }
+
+  nav a[aria-current="page"] {
+    background: var(--active);
+    color: var(--active-ink);
+  }
+
+  @media (max-width: 640px) {
+    .site-header {
+      padding-top: 0.45rem;
+    }
+
+    .brand {
+      margin-bottom: 0.55rem;
+      width: min(calc(100% - 28px), 610px);
+    }
+
+    .brand span {
+      font-size: clamp(1.05rem, 5.5vw, 1.55rem);
+    }
+
+    nav a {
+      font-size: clamp(0.55rem, 2.35vw, 0.72rem);
+      min-height: 2rem;
+      padding-inline: 0.1rem;
+    }
+  }
+</style>

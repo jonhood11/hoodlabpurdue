@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+---
+
+<BaseLayout title="Research | Hood Lab" description="Quantum optics research in ultracold molecules and molecular quantum photonics at Purdue University.">
+  <h1 class="page-heading">Research</h1>
+  <p class="intro">
+    We are an experimental quantum optics group at Purdue University working at the interface of
+    atomic, molecular, and optical physics. Our research focuses on generating remote entanglement
+    between individually trapped atoms, assembling ultracold LiCs molecules for quantum chemistry
+    and quantum simulation, and engineering single-photon sources from organic molecules in
+    photonic structures.
+  </p>
+
+  <nav class="research-cards" aria-label="Research areas">
+    <a href="#ultracold">
+      <img src={withBase("/media/dfd400_f2325ba1d74c48e38dbc01e0b7c73942~mv2.png")} alt="Lithium and cesium atoms in optical tweezers" />
+      <span>Ultracold Quantum Chemistry</span>
+    </a>
+    <a href="#molecules">
+      <img src={withBase("/media/dfd400_995229aab0034d4980e78284b79be0cc~mv2.png")} alt="Organic molecular emitters" />
+      <span>Photon Generation with Organic Molecules</span>
+    </a>
+  </nav>
+
+  <article class="research-section prose" id="ultracold">
+    <h2>Ultracold Quantum Chemistry with Li and Cs</h2>
+    <img src={withBase("/media/dfd400_f2325ba1d74c48e38dbc01e0b7c73942~mv2.png")} alt="Lithium and cesium atom-to-molecule platform" />
+    <p>Ultracold polar molecules offer a powerful platform for quantum simulation of strongly correlated many-body systems. The permanent electric dipole moment of polar molecules provides strong, long-range, and anisotropic interactions that can be precisely controlled with external electric and microwave fields. These dipolar interactions enable the study of exotic quantum phases — including topological states, unconventional superconductivity, and lattice gauge theories — that require long-range coupling difficult to achieve in other quantum platforms.</p>
+    <p>Our group pioneered the bottom-up assembly of single molecules from individually trapped ultracold atoms in optical tweezers. We trap individual atoms of lithium and cesium, cool them to their motional ground states, and coherently associate them into single LiCs molecules. This atom-by-atom approach provides complete quantum state control over both internal and external degrees of freedom. Our landmark work demonstrated the first assembly of a single molecule from two individually prepared atoms (Liu et al., Science 2018) and the first coherent optical creation of a single molecule in a tweezer (Yu et al., Phys. Rev. X 2021).</p>
+    <p>We are now scaling this platform toward arrays of molecular tweezers for programmable quantum simulation. Key recent advances include high-fidelity imaging of single atoms with over 2000 consecutive images without loss (Blodgett et al., Phys. Rev. Lett. 2023), narrow-line electric quadrupole cooling of single cesium atoms for enhanced motional ground-state preparation (Blodgett et al., Phys. Rev. A 2025), and a generalized theory for optical cooling of trapped atoms with spin (Phatak et al., Phys. Rev. A 2024).</p>
+    <img src={withBase("/media/dfd400_5d5feb8c26da4c3c917fdd4c88e1dcbf~mv2.png")} alt="Ultracold quantum chemistry experiment" />
+  </article>
+
+  <article class="research-section prose" id="molecules">
+    <h2>Photon Generation with Organic Molecules</h2>
+    <p>Organic molecules in the solid state are a remarkable platform for quantum photonics and many-body quantum optics. Certain polycyclic aromatic hydrocarbons, such as dibenzoterrylene, exhibit lifetime-limited optical linewidths at cryogenic temperatures and emit predominantly into the zero-phonon line, making them nearly ideal single-photon sources.</p>
+    <p>Our group investigates coherent dipole-dipole interactions between organic emitters for applications in quantum networking and fundamental many-body physics. We demonstrated the first observation of superradiant and subradiant states in lifetime-limited organic molecules, achieved through a novel laser-induced frequency tuning technique that brings pairs of emitters into resonance (Lange et al., Nature Physics 2024).</p>
+    <p>Building on these results, we have developed a hybrid molecular-nanophotonic platform that integrates organic emitters with photonic integrated circuits for on-chip cavity quantum electrodynamics and collective interactions (Lange et al., ACS Nano 2026). We are also exploring vapor-phase assembly techniques for depositing high-quality molecular emitter crystals directly onto photonic structures, opening a route to wafer-scale quantum photonic devices.</p>
+    <img src={withBase("/media/dfd400_979e00dceb9749469ab67f196ad224eb~mv2.png")} alt="Molecular nanophotonic platform" />
+  </article>
+</BaseLayout>
+
+<style>
+  .intro { font-size: 1.08rem; margin: 1rem auto 2.5rem; max-width: 900px; }
+  .research-cards { display: grid; gap: 2rem; grid-template-columns: repeat(2, 1fr); margin-bottom: 5rem; }
+  .research-cards a { background: #262626; display: grid; grid-template-rows: 280px auto; text-decoration: none; }
+  .research-cards img { height: 100%; object-fit: cover; width: 100%; }
+  .research-cards span { font-size: 1.35rem; padding: 1rem; text-align: center; }
+  .research-section { margin: 0 auto 6rem; scroll-margin-top: 1rem; }
+  .research-section h2 { text-align: center; }
+  .research-section img { max-height: 560px; object-fit: contain; }
+  @media (max-width: 680px) {
+    .research-cards { grid-template-columns: 1fr; }
+    .research-cards a { grid-template-rows: 220px auto; }
+  }
+</style>

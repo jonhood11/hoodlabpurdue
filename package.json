@@ -1,0 +1,26 @@
+{
+  "name": "hoodlabpurdue",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify": "node scripts/verify-build.mjs",
+    "qa:capture": "node scripts/capture-qa.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.2",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "cheerio": "^1.2.0",
+    "puppeteer-core": "^25.5.0",
+    "turndown": "^7.2.4",
+    "typescript": "^5.9.3"
+  }
+}

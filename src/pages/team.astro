@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const current = [
+  { name: "Jonathan Hood, PhD", role: "PI", email: "hoodjd@purdue.edu", image: "dfd400_c0d6506fa1de44dcb55b5f3a5889bbf2~mv2.jpg", scholar: "https://scholar.google.com/citations?user=-Rkv_5EAAAAJ&hl=en&oi=ao" },
+  { name: "Christian Lange", role: "Post-doc", email: "lange50@purdue.edu", image: "dfd400_6fa00e6f312e4db99d620dc6e886f4fb~mv2.jpg", scholar: "https://scholar.google.com/citations?user=ucO89aIAAAAJ&hl=en&oi=sra" },
+  { name: "Emma Daggett", role: "Graduate Student", email: "edaggett@purdue.edu", image: "dfd400_90a3618c58d74d5380b2a6569986a61a~mv2.png", scholar: "https://scholar.google.com/citations?hl=en&user=r-es_GUAAAAJ" },
+  { name: "Meng (Raymond) Chen", role: "Graduate Student", email: "chen3221@purdue.edu", image: "dfd400_7b2e81726dbf4f418c282c2499fc6065~mv2.jpg", scholar: "https://scholar.google.com/citations?user=UJWaY0sAAAAJ&hl=zh-CN" },
+  { name: "Ankit Kundu", role: "Graduate Student", email: "kundu16@purdue.edu", image: "dfd400_8d70ebe7c646494c9757c4779e1c451a~mv2.jpg", scholar: "https://scholar.google.com/citations?user=KWO7xv8AAAAJ&hl=en" },
+  { name: "Arya Keni", role: "Graduate Student", email: "keni1@purdue.edu", image: "dfd400_b78c8b237abe418b86dbaf9666e25587~mv2.jpg", scholar: "https://scholar.google.com/citations?user=fd6IpOUAAAAJ&hl=en" },
+  { name: "Ishita Agarwal", role: "Graduate Student", email: "agarw493@purdue.edu", image: "dfd400_366a138b751e454cbbf44adfa3c74681~mv2.jpg", scholar: "https://scholar.google.com/citations?user=mT1JyfcAAAAJ&hl=en" },
+  { name: "Adhyyan Mansukhani", role: "Graduate Student", email: "amansuk@purdue.edu", image: "dfd400_ca10a4f33e68450b8c686dba9bbfd801~mv2.jpg", scholar: "https://scholar.google.com/citations?hl=en&authuser=1&user=a9ZVJOgAAAAJ" },
+  { name: "Sai Seshank Bandaru", role: "Graduate Student", email: "bandaru2@purdue.edu", image: "dfd400_75c36b9aebc8429f85ce4928911ce92a~mv2.jpeg" },
+];
+
+const previous = [
+  { name: "David Peana", role: "First graduate student of the lab — now at Argonne National Laboratory", image: "dfd400_72a31c08231248a7910fcb63409ffe91~mv2.jpg" },
+  { name: "Dr. Saumitra Phatak", role: "Now at Atom Computing", image: "dfd400_7986e4104e0f4e69bf61299da3408818~mv2.jpg", scholar: "https://scholar.google.com/citations?user=sFSr0coAAAAJ&hl=en&oi=ao", extra: { label: "AMO Toolkit", href: "https://amotoolkit.com/home.html" } },
+  { name: "Karl Blodgett, PhD", role: "Post-doc — now at Quantinuum", image: "dfd400_6c4549a56fa74189a8469ffb75120888~mv2.jpg" },
+  { name: "Maria Paula Montes Bejarano", role: "International Scholar", image: "dfd400_34abc86b4f084322ae5651cb7c95d47a~mv2.jpg" },
+  { name: "Luke Lampkins", role: "Undergraduate", image: "dfd400_f32b413aa3054d3e8b6de10760cd034b~mv2.png" },
+  { name: "Lane Terry", role: "Undergraduate", image: "dfd400_2c4a2fad242a4878be66dc528d6aa30d~mv2.png" },
+];
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const media = (filename: string) => `${base}media/${filename}`;
+---
+
+<BaseLayout title="Team | Hood Lab" description="Current and former members of the Hood Lab at Purdue University.">
+  <h1 class="page-heading">Team</h1>
+  <section class="people-grid" aria-label="Current Hood Lab members">
+    {current.map((person) => (
+      <article class="person-card">
+        <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
+        <div>
+          <h2>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h2>
+          <p>{person.role}</p>
+          <a class="email" href={`mailto:${person.email}`}>{person.email.replace("@", " (at) ")}</a>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <h2 class="section-heading">Previous Members</h2>
+  <section class="people-grid" aria-label="Previous Hood Lab members">
+    {previous.map((person) => (
+      <article class="person-card previous">
+        <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
+        <div>
+          <h3>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h3>
+          <p>{person.role}</p>
+          {person.extra && <a href={person.extra.href}>{person.extra.label}</a>}
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .people-grid { display: grid; gap: 2rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .person-card { background: #373737; min-height: 410px; padding: 2rem 1.25rem; text-align: center; }
+  .person-card img { aspect-ratio: 1; border-radius: 50%; height: auto; margin: 0 auto 1.5rem; object-fit: cover; width: min(100%, 210px); }
+  .person-card h2, .person-card h3 { font-size: 1.25rem; margin-bottom: 0.55rem; }
+  .person-card p { color: #d0cecf; font-size: 0.92rem; margin-bottom: 0.55rem; }
+  .email { font-size: 0.82rem; overflow-wrap: anywhere; }
+  .section-heading { margin: 6rem 0 1.5rem; text-align: center; }
+  .previous { min-height: 380px; }
+  @media (max-width: 760px) { .people-grid { gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 460px) { .people-grid { grid-template-columns: 1fr; } .person-card { min-height: 0; } }
+</style>

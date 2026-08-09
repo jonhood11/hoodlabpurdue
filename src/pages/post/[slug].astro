@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  return (await getCollection("news")).map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const displayDate = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+}).format(post.data.published);
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+---
+
+<BaseLayout
+  title={`${post.data.title} | Hood Lab`}
+  description={post.data.description}
+  image={post.data.coverImage}
+>
+  <article class="post">
+    <header>
+      <h1>{post.data.title}</h1>
+      <p class="byline">
+        <span>{post.data.author === "hoodlabpurdue" ? "Hood Lab" : post.data.author}</span>
+        <time datetime={post.data.published.toISOString()}>{displayDate}</time>
+      </p>
+    </header>
+    {post.data.coverImage && (
+      <img class="cover" src={withBase(post.data.coverImage)} alt="" />
+    )}
+    <div class="prose post-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    margin: 3rem auto 0;
+    max-width: 760px;
+  }
+
+  .post > header {
+    border-bottom: 1px solid #353535;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .post h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+  }
+
+  .byline {
+    color: var(--muted);
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .cover {
+    height: auto;
+    margin: 0 auto 2.5rem;
+    max-height: 680px;
+    object-fit: contain;
+    width: auto;
+  }
+
+  .post-body :global(img:first-child) {
+    margin-top: 0;
+  }
+</style>

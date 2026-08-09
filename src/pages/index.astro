@@ -1,0 +1,98 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsCard from "../components/NewsCard.astro";
+
+const posts = (await getCollection("news"))
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf())
+  .slice(0, 2);
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+---
+
+<BaseLayout>
+  <section class="hero" aria-label="Hood Lab group photograph">
+    <img
+      src={withBase("/media/dfd400_7f9e3261a6ab4336abf54efaa67cf60f~mv2.jpg")}
+      width="4080"
+      height="3072"
+      alt="Members of the Hood Lab at a group bowling outing"
+    />
+  </section>
+
+  <section class="welcome prose">
+    <h1>Welcome to the Hood Lab at Purdue!</h1>
+    <p>
+      We are an experimental quantum optics group working at the interface of atomic, molecular,
+      and optical physics. Our research focuses on three areas: (1) generating remote entanglement
+      between individually trapped atoms using photonic links, (2) assembling ultracold LiCs
+      molecules from laser-cooled lithium and cesium atoms in optical tweezers for quantum
+      chemistry and quantum simulation, and (3) engineering single-photon sources from organic
+      molecules embedded in crystals and integrated photonic structures. Across all three efforts,
+      our goal is to harness strong light-matter interactions to build new platforms for quantum
+      science and technology.
+    </p>
+  </section>
+
+  <section class="latest">
+    <h2>News Feed</h2>
+    <div class="latest-grid">
+      {posts.map((post) => (
+        <NewsCard
+          href={post.data.legacyPath}
+          title={post.data.title}
+          published={post.data.published}
+          coverImage={post.data.coverImage}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    margin-top: 2.5rem;
+    overflow: hidden;
+  }
+
+  .hero img {
+    aspect-ratio: 980 / 576;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .welcome {
+    margin-top: 1rem;
+  }
+
+  .welcome h1 {
+    font-size: clamp(1.45rem, 2.5vw, 2rem);
+  }
+
+  .latest {
+    margin-top: 4rem;
+  }
+
+  .latest h2 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+  }
+
+  .latest-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 210px);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      margin-inline: -10px;
+      margin-top: 1.5rem;
+    }
+
+    .latest-grid {
+      gap: 1.25rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

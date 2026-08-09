@@ -1,0 +1,18 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const page = await getEntry("pages", "publications");
+if (!page) throw new Error("Missing publications content");
+const { Content } = await render(page);
+---
+
+<BaseLayout title="Publications | Hood Lab" description={page.data.description}>
+  <h1 class="page-heading">Publications</h1>
+  <article class="content-panel prose publications"><Content /></article>
+</BaseLayout>
+
+<style>
+  .publications :global(h1) { font-size: 1.2rem; margin-top: 2rem; }
+  .publications :global(p) { margin-bottom: 0.9rem; }
+</style>

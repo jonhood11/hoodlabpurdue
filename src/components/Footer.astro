@@ -1,0 +1,68 @@
+---
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img
+      src={withBase("/media/dfd400_571f6dfac8b04a19bcd18822936399ec~mv2.png")}
+      width="502"
+      height="150"
+      alt="Purdue University"
+    />
+    <address>
+      <span>Purdue University</span>
+      <a href="https://www.chem.purdue.edu/">Chemistry Department</a>
+      <a href="https://www.physics.purdue.edu/">Physics and Astronomy Department</a>
+      <span>360 Oval Drive</span>
+      <span>West Lafayette, IN 47907</span>
+    </address>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: clamp(6rem, 15vw, 13rem);
+    padding: 2rem 1rem 3rem;
+  }
+
+  .footer-inner {
+    align-items: center;
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 240px 1fr;
+    margin: 0 auto;
+    max-width: 760px;
+  }
+
+  img {
+    height: auto;
+    width: 220px;
+  }
+
+  address {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.82rem;
+    font-style: normal;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .site-footer {
+      margin-top: 8rem;
+    }
+
+    .footer-inner {
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    img {
+      width: 160px;
+    }
+  }
+</style>
