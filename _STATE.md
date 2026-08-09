@@ -18,6 +18,11 @@
 - Reverified all 39 legacy routes directly against GitHub over production HTTPS.
 - Turned off Wix Core auto-renewal; premium features remain active until Aug 3, 2028.
 - Kept the Wix domain subscription active at $42.70 per two-year renewal cycle.
+- Added `WEBSITE.md`, a complete plain-language handbook covering repository
+  structure, editing, publishing, verification, domain management, Wix status,
+  costs, recovery, and durable operating rules.
+- Expanded `README.md` into the clear entry point for the repository and linked
+  all operational records.
 
 ### Waiting
 
@@ -37,11 +42,12 @@
 - `src/content/news/` — durable Markdown copies of all Wix news posts.
 - `public/media/` — original-quality local media archive.
 - `scripts/verify-build.mjs` — route and local-link verification.
-- `.github/workflows/deploy.yml` — GitHub Pages preview deployment.
+- `.github/workflows/deploy.yml` — GitHub Pages production deployment.
 - `DNS-CUTOVER.md` — exact production switch, validation, and rollback steps.
+- `WEBSITE.md` — complete website, publishing, domain, and maintenance handbook.
 
 ### Next useful action
 
-- No action is required. Recheck the public domain after cache propagation; keep
-  the inexpensive domain registration active unless Jonathan later chooses a
-  GitHub-only URL.
+- Use `WEBSITE.md` as the starting point for future website work. Keep the
+  inexpensive domain registration active unless Jonathan later chooses a
+  different registrar or a GitHub-only URL.

@@ -15,8 +15,10 @@ content, images, and visual identity.
 - Automated internal-link and media checks pass.
 - Desktop and mobile visual comparisons have been reviewed.
 - A GitHub Pages preview is live and independently verified.
-- The production DNS change is documented but not performed without Jonathan's
-  action-time approval.
+- Jonathan approved the production DNS change at action time; both the apex and
+  `www` domain now point to the verified GitHub Pages deployment over HTTPS.
+- Wix Core auto-renewal is off, while the inexpensive Wix domain registration
+  remains active.
 
 ## Checkpoints
 
@@ -27,9 +29,12 @@ content, images, and visual identity.
 - [x] Validate routes, links, media, and accessibility.
 - [x] Publish and verify the GitHub Pages preview.
 - [x] Prepare rollback-safe DNS cutover instructions.
+- [x] Cut over and verify the production custom domain after approval.
+- [x] Turn off Wix website-plan auto-renewal while retaining the domain.
 
 ## Safety boundary
 
-Do not change Wix DNS, cancel Wix, transfer the domain, or cut over production
-until the replacement is verified and Jonathan approves the DNS mutation at
-action time.
+The production cutover was completed only after the replacement was verified
+and Jonathan approved the DNS mutation at action time. Keep the domain
+registration active unless Jonathan explicitly decides to transfer or abandon
+`hoodlabpurdue.com`.
