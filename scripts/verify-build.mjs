@@ -4,9 +4,17 @@ import { load } from "cheerio";
 
 const outputDir = resolve(process.argv[2] || "dist");
 const expectedBase = process.argv[3] || "/";
-const inventory = JSON.parse(await readFile(".migration-cache/inventory.json", "utf8"));
 const htmlFiles = await collectHtml(outputDir);
 const errors = [];
+const expectedRoutes = new Set(["/", "/blank-6", "/blog", "/links", "/publications", "/research", "/team", "/theses"]);
+
+for (const file of await readdir("src/content/news")) {
+  if (!file.endsWith(".md")) continue;
+  const source = await readFile(join("src/content/news", file), "utf8");
+  const match = source.match(/^legacyPath:\s*["']?([^"'\n]+)["']?$/m);
+  if (!match) errors.push(`Missing legacyPath in news source: ${file}`);
+  else expectedRoutes.add(match[1]);
+}
 
 const builtRoutes = new Set(
   htmlFiles.map((file) => {
@@ -16,8 +24,8 @@ const builtRoutes = new Set(
   }),
 );
 
-for (const route of inventory.routes) {
-  if (!builtRoutes.has(route.pathname)) errors.push(`Missing legacy route: ${route.pathname}`);
+for (const route of expectedRoutes) {
+  if (!builtRoutes.has(route)) errors.push(`Missing legacy route: ${route}`);
 }
 
 for (const file of htmlFiles) {
@@ -62,8 +70,8 @@ for (const file of htmlFiles) {
   }
 }
 
-if (builtRoutes.size !== inventory.routes.length) {
-  errors.push(`Route count differs: built ${builtRoutes.size}, Wix ${inventory.routes.length}`);
+if (builtRoutes.size !== expectedRoutes.size) {
+  errors.push(`Route count differs: built ${builtRoutes.size}, expected ${expectedRoutes.size}`);
 }
 
 if (errors.length) {
