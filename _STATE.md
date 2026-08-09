@@ -13,10 +13,15 @@
 - Published and verified all 39 routes at the GitHub Pages HTTPS preview.
 - Prepared a rollback-safe DNS cutover runbook with the current Wix record snapshot.
 - Audited 73 external URLs and replaced the one retired Fall 2022 Purdue mailing-list link with an archival note.
+- Cut production DNS from Wix hosting to GitHub Pages on 2026-08-09.
+- Enabled and verified HTTPS for `www.hoodlabpurdue.com` and its apex redirect.
+- Reverified all 39 legacy routes directly against GitHub over production HTTPS.
+- Turned off Wix Core auto-renewal; premium features remain active until Aug 3, 2028.
+- Kept the Wix domain subscription active at $42.70 per two-year renewal cycle.
 
 ### Waiting
 
-- DNS and TLS propagation after Jonathan's 2026-08-09 approval of the production cutover.
+- Residual resolver/browser caches may show Wix for up to the former one-hour DNS TTL.
 
 ### Decisions
 
@@ -37,5 +42,6 @@
 
 ### Next useful action
 
-- Complete and verify the approved DNS cutover, then cancel only the Wix website
-  plan while preserving the paid-through-2028 domain registration.
+- No action is required. Recheck the public domain after cache propagation; keep
+  the inexpensive domain registration active unless Jonathan later chooses a
+  GitHub-only URL.

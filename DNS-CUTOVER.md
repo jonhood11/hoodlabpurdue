@@ -3,6 +3,13 @@
 This runbook moves `hoodlabpurdue.com` from Wix hosting to the verified GitHub
 Pages build. Wix remains the registrar. Do not transfer or cancel the domain.
 
+## Execution status
+
+Completed on 2026-08-09 with Jonathan's action-time approval. GitHub Pages is
+configured for `www.hoodlabpurdue.com`, HTTPS enforcement is active, all 39
+legacy routes passed production verification, and Wix Core auto-renewal is off.
+The Wix domain subscription remains active.
+
 ## Safety boundary
 
 Do not perform this runbook until Jonathan has reviewed the preview and approved
