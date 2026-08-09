@@ -23,6 +23,27 @@ published, and what remains at Wix.
 The website no longer depends on Wix hosting. Keeping the domain at Wix does
 not require keeping a Wix website plan.
 
+## For future website requests
+
+Future changes should be made in this repository. Jonathan can open a Codex
+task in the repository and say, for example:
+
+> Please change the Hood Lab website by adding this news item, updating the
+> team page, and replacing this image. Validate it, sync it to GitHub, and
+> verify the live page.
+
+The task should then:
+
+1. Read `AGENTS.md`, this handbook, and `_STATE.md`.
+2. Locate the relevant source content and preserve unrelated work.
+3. Make the requested edit locally.
+4. Run the complete checks described below.
+5. Review and sync only the intended changes to GitHub.
+6. Verify the changed production page after GitHub Pages deploys it.
+
+The Wix editor should not be used for normal content updates. The GitHub
+repository is the source of truth.
+
 ## What is stored here
 
 This repository is the authoritative editable source for the public website.
@@ -165,6 +186,46 @@ the current price, transfer lock, registrant email, DNS records, and renewal
 date. A transfer changes who manages the domain; it does not require rebuilding
 the website.
 
+### Possible future domain transfer
+
+There is no need to transfer the domain now because it is already paid through
+July 4, 2028. Revisit the decision before that renewal if a lower-cost registrar
+would save enough to justify the move.
+
+Use this checklist if Jonathan later approves a transfer:
+
+1. Compare the current `.com` transfer and renewal prices of reputable
+   registrars. Check the ordinary renewal price, not only a first-year sale.
+2. Confirm that `hoodlabpurdue.com` is active, that the registrant email is
+   reachable, and that no recent ownership/contact change created a 60-day
+   transfer lock.
+3. Record the complete live DNS table in Wix. At minimum, preserve the GitHub
+   Pages `A` and `www` `CNAME` records shown below, plus any unrelated mail,
+   verification, or security records that exist at transfer time.
+4. Create and secure the new registrar account. Enable multi-factor
+   authentication and domain auto-renewal unless Jonathan deliberately chooses
+   otherwise.
+5. In Wix, unlock the domain and request the transfer authorization/EPP code.
+   Never save that code in this repository, a task transcript, or `_STATE.md`.
+6. Start the transfer at the new registrar, enter the authorization code only
+   in its secure transfer form, review the exact price, and approve payment.
+   Most `.com` transfers include an additional registration year.
+7. Follow the approval messages sent to the registrant email. A transfer may
+   take several days.
+8. After completion, confirm the new registrar shows Jonathan as the owner,
+   the expiration date includes the added year, privacy protection is enabled,
+   and all DNS records are correct.
+9. Verify both <https://hoodlabpurdue.com/> and
+   <https://www.hoodlabpurdue.com/> over HTTPS, along with several old news
+   URLs, before considering the move complete.
+10. Keep the Wix account until the transfer and all verification are complete.
+    Then confirm Wix shows no remaining renewable products before deciding
+    whether to close the account.
+
+Do not combine a registrar transfer with routine website-content changes. It
+should be a separately approved and separately verified operation with a fresh
+DNS snapshot.
+
 ## Production DNS
 
 The public domain points to GitHub Pages using GitHub's standard records:
@@ -219,6 +280,8 @@ repository.
 ## Durable operating rules
 
 - Treat this GitHub repository as the authoritative website source.
+- Start future Codex website tasks by reading `AGENTS.md`, this handbook, and
+  `_STATE.md`.
 - Keep public content and media local to the repository when licensing and file
   size permit.
 - Never commit passwords, authentication state, billing identifiers, private

@@ -23,6 +23,10 @@
   costs, recovery, and durable operating rules.
 - Expanded `README.md` into the clear entry point for the repository and linked
   all operational records.
+- Added `AGENTS.md` so future Codex tasks immediately use this repository,
+  validate changes, sync intentionally, and avoid the Wix editor.
+- Added a future-request workflow and a detailed, approval-gated domain-transfer
+  checklist to `WEBSITE.md`.
 
 ### Waiting
 
@@ -45,6 +49,7 @@
 - `.github/workflows/deploy.yml` — GitHub Pages production deployment.
 - `DNS-CUTOVER.md` — exact production switch, validation, and rollback steps.
 - `WEBSITE.md` — complete website, publishing, domain, and maintenance handbook.
+- `AGENTS.md` — concise operating instructions for future Codex website tasks.
 
 ### Next useful action
 

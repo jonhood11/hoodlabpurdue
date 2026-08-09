@@ -23,6 +23,9 @@ explains:
 - current costs and renewal status;
 - validation, recovery, and rollback procedures.
 
+Future Codex tasks should also read [`AGENTS.md`](AGENTS.md), which contains the
+short operating rules for safely editing and publishing the site.
+
 ## Quick local preview
 
 ```bash
@@ -44,6 +47,7 @@ deployment in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 ## Supporting records
 
 - [`WEBSITE.md`](WEBSITE.md) — complete website handbook and editing guide.
+- [`AGENTS.md`](AGENTS.md) — instructions for future Codex website tasks.
 - [`_STATE.md`](_STATE.md) — current status, decisions, and next action.
 - [`DNS-CUTOVER.md`](DNS-CUTOVER.md) — DNS cutover evidence and exact rollback.
 - [`GOAL.md`](GOAL.md) — original Wix-to-GitHub migration objective and proof.
