@@ -25,8 +25,8 @@ content, images, and visual identity.
 - [x] Rebuild regular pages.
 - [x] Import all news posts.
 - [x] Validate routes, links, media, and accessibility.
-- [ ] Publish and verify the GitHub Pages preview.
-- [ ] Prepare rollback-safe DNS cutover instructions.
+- [x] Publish and verify the GitHub Pages preview.
+- [x] Prepare rollback-safe DNS cutover instructions.
 
 ## Safety boundary
 

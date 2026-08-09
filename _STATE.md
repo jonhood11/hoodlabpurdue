@@ -10,11 +10,12 @@
 - Preserved all public paths, including `/blank-6` and every `/post/...` URL.
 - Passed Astro checks, production and preview builds, and local link/media audits.
 - Reviewed desktop and 390-pixel mobile captures with no horizontal overflow.
+- Published and verified all 39 routes at the GitHub Pages HTTPS preview.
+- Prepared a rollback-safe DNS cutover runbook with the current Wix record snapshot.
 
-### In progress
+### Waiting
 
-- Publishing and independently verifying the GitHub Pages preview.
-- Preparing the rollback-safe DNS cutover runbook.
+- Jonathan's preview review and explicit action-time approval for the domain cutover.
 
 ### Decisions
 
@@ -31,8 +32,9 @@
 - `public/media/` — original-quality local media archive.
 - `scripts/verify-build.mjs` — route and local-link verification.
 - `.github/workflows/deploy.yml` — GitHub Pages preview deployment.
+- `DNS-CUTOVER.md` — exact production switch, validation, and rollback steps.
 
 ### Next useful action
 
-- Publish the preview, verify it over HTTPS, and document the Wix-to-GitHub DNS
-  cutover without changing production DNS.
+- Review the preview. If approved, execute `DNS-CUTOVER.md` under action-time
+  approval and keep Wix available through the observation window.

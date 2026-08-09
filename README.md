@@ -23,3 +23,5 @@ npm run verify -- dist /
 The GitHub Actions workflow deploys a project-site preview at
 `https://jonhood11.github.io/hoodlabpurdue/`. The custom domain remains on Wix
 until the preview is approved and the DNS cutover is performed separately.
+
+The production switch and exact rollback records are in `DNS-CUTOVER.md`.
