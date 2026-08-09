@@ -16,7 +16,7 @@
 
 ### Waiting
 
-- Jonathan's preview review and explicit action-time approval for the domain cutover.
+- DNS and TLS propagation after Jonathan's 2026-08-09 approval of the production cutover.
 
 ### Decisions
 
@@ -37,5 +37,5 @@
 
 ### Next useful action
 
-- Review the preview. If approved, execute `DNS-CUTOVER.md` under action-time
-  approval and keep Wix available through the observation window.
+- Complete and verify the approved DNS cutover, then cancel only the Wix website
+  plan while preserving the paid-through-2028 domain registration.
