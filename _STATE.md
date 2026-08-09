@@ -12,6 +12,7 @@
 - Reviewed desktop and 390-pixel mobile captures with no horizontal overflow.
 - Published and verified all 39 routes at the GitHub Pages HTTPS preview.
 - Prepared a rollback-safe DNS cutover runbook with the current Wix record snapshot.
+- Audited 73 external URLs and replaced the one retired Fall 2022 Purdue mailing-list link with an archival note.
 
 ### Waiting
 

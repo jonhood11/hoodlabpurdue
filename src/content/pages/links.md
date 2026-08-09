@@ -13,4 +13,4 @@ Location: Brown 4102
 
 Time: Friday at 4pm (biweekly)
 
-To sign up for email reminders, [click here](https://lists.purdue.edu/mailman/listinfo/purduequantum).
+The original Purdue email-reminder signup page is no longer available.
