@@ -25,6 +25,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hood Lab" />

@@ -1,0 +1,169 @@
+---
+// The X3 news feed: timeline rail with dots and year chips; each entry is text on
+// the left and one big landscape figure on the right. Used by the home page (recent
+// posts) and the News page (all posts) so the two always look identical.
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"news">[];
+}
+
+const { posts } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: d.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+  }).format(d);
+const entries = posts.map((post, i) => ({
+  post,
+  newYear:
+    i === 0 || post.data.published.getFullYear() !== posts[i - 1].data.published.getFullYear(),
+}));
+---
+
+<ol class="timeline">
+  {entries.map(({ post, newYear }) => (
+    <li>
+      {newYear && <span class="year">{post.data.published.getFullYear()}</span>}
+      <article class="entry">
+        <span class="dot" aria-hidden="true"></span>
+        <a href={withBase(post.data.legacyPath)} class:list={[{ "no-image": !post.data.coverImage }]}>
+          <div class="txt">
+            <time datetime={post.data.published.toISOString()}>{fmt(post.data.published)}</time>
+            <h3>{post.data.title}</h3>
+            {post.data.description && post.data.description !== post.data.title && (
+              <p>{post.data.description}</p>
+            )}
+          </div>
+          {post.data.coverImage && (
+            <img src={withBase(post.data.coverImage)} alt="" loading="lazy" />
+          )}
+        </a>
+      </article>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline {
+    border-left: 2px solid var(--band);
+    list-style: none;
+    margin: 0 0 0 0.4rem;
+    padding: 0.3rem 0;
+  }
+
+  .year {
+    background: var(--band);
+    border-radius: 999px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    margin: 0.9rem 0 0.4rem 2rem;
+    padding: 0.14rem 0.85rem;
+  }
+
+  li:first-child .year {
+    margin-top: 0.2rem;
+  }
+
+  .entry {
+    position: relative;
+  }
+
+  .dot {
+    background: var(--band);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    height: 11px;
+    left: -8px;
+    position: absolute;
+    top: 2.15rem;
+    width: 11px;
+  }
+
+  .entry a {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    color: inherit;
+    display: grid;
+    gap: clamp(1.2rem, 3vw, 2.2rem);
+    grid-template-columns: 1fr minmax(300px, 44%);
+    padding: 1.35rem 0.3rem 1.35rem 2rem;
+    text-decoration: none;
+  }
+
+  .entry a.no-image {
+    grid-template-columns: 1fr;
+  }
+
+  .entry a:hover {
+    background: #faf9f5;
+    color: inherit;
+  }
+
+  li:last-child .entry a {
+    border-bottom: 0;
+  }
+
+  .txt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+
+  time {
+    color: var(--gold);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 1.22rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .entry a:hover h3 {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .txt p {
+    color: var(--muted);
+    display: -webkit-box;
+    font-size: 0.93rem;
+    margin: 0.15rem 0 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .entry img {
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @media (max-width: 760px) {
+    .entry a,
+    .entry a.no-image {
+      grid-template-columns: 1fr;
+    }
+
+    .entry img {
+      order: 2;
+    }
+  }
+</style>

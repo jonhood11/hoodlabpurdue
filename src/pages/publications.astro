@@ -1,18 +1,221 @@
 ---
-import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { PUBS, SCHOLAR, byYear } from "../data/publications";
 
-const page = await getEntry("pages", "publications");
-if (!page) throw new Error("Missing publications content");
-const { Content } = await render(page);
+// The lab's Purdue-era papers run 2022 onward; everything earlier is the PI's
+// postdoc and PhD work, shown as one flat group at the end.
+const PURDUE_START = 2022;
+const groups = byYear(PUBS.filter((p) => p.year >= PURDUE_START));
+const prior = PUBS.filter((p) => p.year < PURDUE_START);
+const short = (label: string) => {
+  const m = label.match(/^(.*?)(?:\s*\(|\s+\d)/);
+  return (m ? m[1] : label).trim();
+};
 ---
 
-<BaseLayout title="Publications | Hood Lab" description={page.data.description}>
-  <h1 class="page-heading">Publications</h1>
-  <article class="content-panel prose publications"><Content /></article>
+<BaseLayout title="Publications | Hood Lab" description="Publications from the Hood Lab at Purdue University.">
+  <div class="head-row">
+    <h1>Publications</h1>
+    <a class="scholar" href={SCHOLAR}>Google Scholar</a>
+  </div>
+
+  {groups.map(({ year, items }) => (
+    <section class="year-group">
+      <h2>{year}</h2>
+      <ul>
+        {items.map((pub) => (
+          <li>
+            <p class="badge-row">
+              {pub.venue &&
+                (pub.venue.href ? (
+                  <a class="badge" href={pub.venue.href}>{short(pub.venue.label)}</a>
+                ) : (
+                  <span class="badge">{short(pub.venue.label)}</span>
+                ))}
+              {pub.arxiv && <a class="link" href={pub.arxiv}>arXiv</a>}
+              {pub.venue?.href && <a class="link" href={pub.venue.href}>Journal</a>}
+              {(pub.extras ?? []).map((e) => (
+                <a class="link" href={e.href}>{e.label.startsWith("News") ? "News & Views" : e.label}</a>
+              ))}
+            </p>
+            <h3>{pub.title}</h3>
+            <p class="authors">{pub.authors}</p>
+            {pub.venue && <p class="venue">{pub.venue.label}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <section class="year-group prior">
+    <h2 class="prior-head">Before Purdue <span class="prior-note">PI's postdoc and PhD work</span></h2>
+    <ul>
+      {prior.map((pub) => (
+        <li>
+          <p class="badge-row">
+            {pub.venue &&
+              (pub.venue.href ? (
+                <a class="badge" href={pub.venue.href}>{short(pub.venue.label)}</a>
+              ) : (
+                <span class="badge">{short(pub.venue.label)}</span>
+              ))}
+            <span class="year-inline">{pub.year}</span>
+            {pub.arxiv && <a class="link" href={pub.arxiv}>arXiv</a>}
+            {pub.venue?.href && <a class="link" href={pub.venue.href}>Journal</a>}
+            {(pub.extras ?? []).map((e) => (
+              <a class="link" href={e.href}>{e.label.startsWith("News") ? "News & Views" : e.label}</a>
+            ))}
+          </p>
+          <h3>{pub.title}</h3>
+          <p class="authors">{pub.authors}</p>
+          {pub.venue && <p class="venue">{pub.venue.label}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
 </BaseLayout>
 
 <style>
-  .publications :global(h1) { font-size: 1.2rem; margin-top: 2rem; }
-  .publications :global(p) { margin-bottom: 0.9rem; }
+  .head-row {
+    align-items: baseline;
+    border-bottom: 3px solid var(--band);
+    display: flex;
+    justify-content: space-between;
+    margin: 2.4rem 0 1.6rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .head-row h1 {
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .scholar {
+    color: var(--gold);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .scholar:hover {
+    text-decoration: underline;
+  }
+
+  h2 {
+    color: var(--band);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 1.8rem 0 0.9rem;
+  }
+
+  .prior-head {
+    align-items: baseline;
+    border-top: 3px solid var(--band);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.6rem;
+    padding-top: 1.2rem;
+  }
+
+  .prior-note {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .year-inline {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .year-group:first-of-type h2 {
+    margin-top: 0.4rem;
+  }
+
+  .year-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .year-group li {
+    border-bottom: 1px solid var(--line);
+    padding: 0.95rem 0.1rem 1.05rem;
+  }
+
+  .year-group:last-of-type li:last-child {
+    border-bottom: 0;
+  }
+
+  .badge-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .badge {
+    border: 1.5px solid #cfb991;
+    border-radius: 999px;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.1rem 0.7rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  a.badge:hover {
+    background: #faf7ef;
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .link {
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  h3 {
+    font-size: 1.04rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 0.2rem;
+  }
+
+  .authors {
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin: 0 0 0.1rem;
+  }
+
+  .venue {
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .note {
+    color: var(--muted);
+    font-style: normal;
+  }
 </style>

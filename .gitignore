@@ -5,3 +5,6 @@ dist-preview/
 .DS_Store
 *.log
 .migration-cache/
+
+# Publisher-formatted page renders in the working library are regenerable and stay out of git
+paper-assets/**/page1-journal.png

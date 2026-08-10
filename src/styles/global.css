@@ -1,13 +1,12 @@
 :root {
-  color-scheme: dark;
-  --ink: #e7e5e6;
-  --muted: #b9b6b8;
-  --panel: #343434;
-  --line: #202326;
-  --active: #e8f0f2;
-  --active-ink: #ffffff;
-  --page: #000000;
-  --content: 980px;
+  color-scheme: light;
+  --page: #ffffff;
+  --band: #232020; /* matches the background baked into the Hood Lab logo PNG */
+  --ink: #191813;
+  --muted: #6a655c;
+  --gold: #8a6a17;
+  --line: #e9e6df;
+  --content: 940px;
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -27,9 +26,9 @@ body {
   color: var(--ink);
   margin: 0;
   min-height: 100vh;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.65;
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 img,
@@ -44,31 +43,38 @@ a {
   text-underline-offset: 0.18em;
 }
 
-a:hover,
+a:hover {
+  color: var(--gold);
+}
+
 a:focus-visible {
-  color: #ffffff;
+  color: var(--gold);
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  color: #f4f2f3;
-  font-weight: 300;
-  line-height: 1.18;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.2;
   margin: 0 0 0.8em;
 }
 
 h1 {
-  font-size: clamp(2.3rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
 }
 
 h2 {
-  font-size: clamp(1.75rem, 3vw, 2.6rem);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 600;
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 600;
 }
 
 p {
@@ -78,25 +84,31 @@ p {
 .site-main {
   margin-inline: auto;
   min-height: 64vh;
-  width: min(calc(100% - 32px), var(--content));
+  width: min(calc(100% - 48px), var(--content));
 }
 
 .page-heading {
-  margin: 0 auto 1.5rem;
-  padding-top: 1.4rem;
-  text-align: center;
+  border-bottom: 3px solid var(--band);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  margin: 2.4rem 0 1.8rem;
+  padding-bottom: 0.55rem;
+  text-align: left;
 }
 
+/* Legacy wrapper from the dark theme; content now sits directly on the page. */
 .content-panel {
-  background: var(--panel);
-  padding: clamp(1.25rem, 4vw, 2.5rem);
+  background: transparent;
+  padding: 0;
 }
 
 .prose {
-  font-size: 1.04rem;
+  font-size: 1.02rem;
 }
 
 .prose :where(img, video, iframe) {
+  border: 1px solid var(--line);
+  border-radius: 10px;
   height: auto;
   margin: 1.75rem auto;
 }
@@ -118,10 +130,10 @@ p {
 
 @media (max-width: 640px) {
   body {
-    font-size: 15px;
+    font-size: 15.5px;
   }
 
   .site-main {
-    width: min(calc(100% - 20px), var(--content));
+    width: min(calc(100% - 32px), var(--content));
   }
 }

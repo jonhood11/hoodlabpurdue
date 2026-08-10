@@ -5,10 +5,10 @@ published: "2025-05-16T13:44:34.087Z"
 modified: "2025-05-16T13:57:07.119Z"
 author: "hoodlabpurdue"
 legacyPath: "/post/quadrupole-imaging-and-cooling-paper"
-coverImage: "/media/dfd400_7036ed75eef1471f8a6ff5f3debd5ede~mv2.png"
+coverImage: "/media/paper-quadrupole-fig1.png"
 ---
 
-![](/media/dfd400_7036ed75eef1471f8a6ff5f3debd5ede~mv2.png)
+![First page of the paper (journal version)](/media/paper-quadrupole-page1.png)
 
   
 

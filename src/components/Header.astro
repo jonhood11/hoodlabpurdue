@@ -22,12 +22,12 @@ function isCurrent(href: string) {
 }
 ---
 
-<header class="site-header">
+<header class="band">
   <a class="brand" href={withBase("/")} aria-label="Hood Lab home">
     <img
       src={withBase("/media/dfd400_81ee0a0d44ad4b99bea692a931e99990~mv2.png")}
-      width="1651"
-      height="406"
+      width="1749"
+      height="430"
       alt="Hood Lab"
     />
     <span>Quantum Optics Lab @ Purdue</span>
@@ -46,79 +46,81 @@ function isCurrent(href: string) {
 </header>
 
 <style>
-  .site-header {
-    background: #000;
-    border-bottom: 5px solid #121517;
-    padding-top: 1rem;
+  .band {
+    background: var(--band);
+    color: #f2f0ee;
+    padding: 1.4rem 24px 0;
+    text-align: center;
   }
 
   .brand {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 0.8rem;
+    display: inline-block;
     text-decoration: none;
-    width: min(calc(100% - 36px), 696px);
+  }
+
+  .brand:hover {
+    color: inherit;
   }
 
   .brand img {
     height: auto;
-    width: 100%;
+    margin-inline: auto;
+    width: min(340px, 70vw);
   }
 
   .brand span {
-    font-size: clamp(1.25rem, 3.4vw, 2.2rem);
-    letter-spacing: 0.01em;
-    line-height: 1.1;
-    margin-top: 0.2rem;
+    color: #cfccc7;
+    display: block;
+    font-size: 0.76rem;
+    letter-spacing: 0.24em;
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  nav {
+    margin-top: 0.9rem;
   }
 
   nav ul {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 3vw, 2.2rem);
+    justify-content: center;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 0 0 0.9rem;
   }
 
   nav a {
-    align-items: center;
-    border-right: 1px solid #a2a2a2;
-    display: flex;
-    font-size: 0.84rem;
-    justify-content: center;
-    min-height: 2.1rem;
-    padding: 0.4rem;
+    border-bottom: 2px solid transparent;
+    color: #b9b5af;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    padding-block: 0.3rem;
     text-decoration: none;
   }
 
-  nav li:last-child a {
-    border-right: 0;
+  nav a:hover {
+    color: #ffffff;
   }
 
   nav a[aria-current="page"] {
-    background: var(--active);
-    color: var(--active-ink);
+    border-bottom-color: #ffffff;
+    color: #ffffff;
   }
 
   @media (max-width: 640px) {
-    .site-header {
-      padding-top: 0.45rem;
+    .band {
+      padding-top: 1rem;
     }
 
-    .brand {
-      margin-bottom: 0.55rem;
-      width: min(calc(100% - 28px), 610px);
+    .brand img {
+      width: min(280px, 78vw);
     }
 
-    .brand span {
-      font-size: clamp(1.05rem, 5.5vw, 1.55rem);
-    }
-
-    nav a {
-      font-size: clamp(0.55rem, 2.35vw, 0.72rem);
-      min-height: 2rem;
-      padding-inline: 0.1rem;
+    nav ul {
+      gap: 0.4rem 1.1rem;
+      row-gap: 0.15rem;
     }
   }
 </style>

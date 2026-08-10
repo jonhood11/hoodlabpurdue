@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NewsCard from "../../components/NewsCard.astro";
+import NewsTimeline from "../../components/NewsTimeline.astro";
 
 const posts = (await getCollection("news")).sort(
   (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
@@ -10,40 +10,7 @@ const posts = (await getCollection("news")).sort(
 
 <BaseLayout title="News | Hood Lab" description="News and milestones from the Hood Lab at Purdue.">
   <h1 class="page-heading">All Posts</h1>
-  <section class="news-grid" aria-label="News posts">
-    {posts.map((post) => (
-      <NewsCard
-        href={post.data.legacyPath}
-        title={post.data.title}
-        published={post.data.published}
-        coverImage={post.data.coverImage}
-      />
-    ))}
+  <section aria-label="News posts">
+    <NewsTimeline posts={posts} />
   </section>
 </BaseLayout>
-
-<style>
-  .page-heading {
-    font-size: 1.8rem;
-    text-align: left;
-  }
-
-  .news-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  @media (max-width: 740px) {
-    .news-grid {
-      gap: 1rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 420px) {
-    .news-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

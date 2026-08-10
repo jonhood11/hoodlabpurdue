@@ -5,7 +5,7 @@ published: "2026-04-11T19:26:33.413Z"
 modified: "2026-04-11T19:26:33.413Z"
 author: "hoodlabpurdue"
 legacyPath: "/post/new-paper-cavity-qed-with-molecular-emitters-in-acs-nano"
-coverImage: "/media/dfd400_da2e1124868a4305860bc2eab55a832e~mv2.png"
+coverImage: "/media/paper-acs-nano-fig1.png"
 ---
 
 Our latest paper led by Christian Lange has been published in ACS Nano! We present a hybrid solid-state cavity quantum electrodynamics platform that integrates coherent organic molecules with high-quality-factor silicon nitride photonic crystal cavities. By mechanically transferring thin anthracene crystals doped with dibenzoterrylene (DBT) onto prefabricated cavities, we preserve both the cavity quality and molecular coherence. With up to ten molecules coupled to a single cavity, we observe cavity-mediated interactions in both dispersive and dissipative regimes, establishing a route to deterministic on-chip single- and multiphoton sources.
@@ -16,4 +16,4 @@ CM Lange, AD Keni, I Agarwal, E Daggett, AS Mansukhani, A Kundu, B Cerjan, L Hua
 
   
 
-![](/media/dfd400_da2e1124868a4305860bc2eab55a832e~mv2.png)
+![First page of the paper (journal version)](/media/paper-acs-nano-page1.png)

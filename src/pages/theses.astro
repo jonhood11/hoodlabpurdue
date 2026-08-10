@@ -1,19 +1,133 @@
 ---
-import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { THESES, CHAMPAGNE, COUNT_HEADING } from "../data/theses";
 
-const page = await getEntry("pages", "theses");
-if (!page) throw new Error("Missing theses content");
-const { Content } = await render(page);
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
 ---
 
-<BaseLayout title="Theses | Hood Lab" description={page.data.description}>
+<BaseLayout title="Theses | Hood Lab" description="Graduates and theses from the Hood Lab.">
   <h1 class="page-heading">Theses</h1>
-  <article class="content-panel prose theses"><Content /></article>
+
+  <section class="count">
+    <div class="count-copy">
+      <h2>{COUNT_HEADING}</h2>
+      <p>One bottle for every defense — the shelf keeps growing.</p>
+    </div>
+    <img class="champagne" src={withBase(CHAMPAGNE)} alt="Champagne bottles from thesis defenses" />
+  </section>
+
+  <ul class="rows">
+    {THESES.map((t) => (
+      <li>
+        <img class="portrait" src={withBase(t.portrait)} alt={`Portrait of ${t.person}`} loading="lazy" />
+        <div>
+          <p class="year">{t.year}</p>
+          <h3><a href={t.href}>{t.title}</a></h3>
+          <p class="who">{t.person} · {t.group}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
 </BaseLayout>
 
 <style>
-  .theses { text-align: center; }
-  .theses :global(img) { max-height: 420px; object-fit: contain; }
-  .theses :global(h1) { font-size: 1.4rem; }
+  .count {
+    align-items: center;
+    display: grid;
+    gap: clamp(1.6rem, 4vw, 2.8rem);
+    grid-template-columns: 1fr minmax(240px, 38%);
+    margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
+  }
+
+  .count h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+  }
+
+  .count-copy p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .champagne {
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rows li {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 1.6rem;
+    padding: 1.15rem 0.2rem;
+  }
+
+  .rows li:last-child {
+    border-bottom: 0;
+  }
+
+  .portrait {
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: auto;
+    object-fit: cover;
+    width: 86px;
+  }
+
+  .year {
+    color: var(--gold);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    margin: 0 0 0.15rem;
+  }
+
+  .rows h3 {
+    font-size: 1.14rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 0.2rem;
+  }
+
+  .rows h3 a {
+    text-decoration: none;
+  }
+
+  .rows h3 a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .who {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .count {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .portrait {
+      width: 64px;
+    }
+  }
 </style>

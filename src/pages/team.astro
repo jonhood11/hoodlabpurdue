@@ -13,10 +13,13 @@ const current = [
   { name: "Sai Seshank Bandaru", role: "Graduate Student", email: "bandaru2@purdue.edu", image: "dfd400_75c36b9aebc8429f85ce4928911ce92a~mv2.jpeg" },
 ];
 
-const previous = [
-  { name: "David Peana", role: "First graduate student of the lab — now at Argonne National Laboratory", image: "dfd400_72a31c08231248a7910fcb63409ffe91~mv2.jpg" },
-  { name: "Dr. Saumitra Phatak", role: "Now at Atom Computing", image: "dfd400_7986e4104e0f4e69bf61299da3408818~mv2.jpg", scholar: "https://scholar.google.com/citations?user=sFSr0coAAAAJ&hl=en&oi=ao", extra: { label: "AMO Toolkit", href: "https://amotoolkit.com/home.html" } },
+const previousGrad = [
+  { name: "David Peana, PhD", role: "First graduate student of the lab — now at Argonne National Laboratory", image: "dfd400_72a31c08231248a7910fcb63409ffe91~mv2.jpg" },
+  { name: "Saumitra Phatak, PhD", role: "Now at Atom Computing", image: "dfd400_7986e4104e0f4e69bf61299da3408818~mv2.jpg", scholar: "https://scholar.google.com/citations?user=sFSr0coAAAAJ&hl=en&oi=ao", extra: { label: "AMO Toolkit", href: "https://amotoolkit.com/home.html" } },
   { name: "Karl Blodgett, PhD", role: "Post-doc — now at Quantinuum", image: "dfd400_6c4549a56fa74189a8469ffb75120888~mv2.jpg" },
+];
+
+const previousUndergrad = [
   { name: "Maria Paula Montes Bejarano", role: "International Scholar", image: "dfd400_34abc86b4f084322ae5651cb7c95d47a~mv2.jpg" },
   { name: "Luke Lampkins", role: "Undergraduate", image: "dfd400_f32b413aa3054d3e8b6de10760cd034b~mv2.png" },
   { name: "Lane Terry", role: "Undergraduate", image: "dfd400_2c4a2fad242a4878be66dc528d6aa30d~mv2.png" },
@@ -30,26 +33,39 @@ const media = (filename: string) => `${base}media/${filename}`;
   <h1 class="page-heading">Team</h1>
   <section class="people-grid" aria-label="Current Hood Lab members">
     {current.map((person) => (
-      <article class="person-card">
+      <article class="person">
         <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
         <div>
           <h2>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h2>
           <p>{person.role}</p>
-          <a class="email" href={`mailto:${person.email}`}>{person.email.replace("@", " (at) ")}</a>
+          <a class="email" href={`mailto:${person.email}`}>{person.email}</a>
         </div>
       </article>
     ))}
   </section>
 
-  <h2 class="section-heading">Previous Members</h2>
-  <section class="people-grid" aria-label="Previous Hood Lab members">
-    {previous.map((person) => (
-      <article class="person-card previous">
+  <h2 class="section-heading">Previous Graduate Students &amp; Postdocs</h2>
+  <section class="people-grid" aria-label="Previous graduate students and postdocs">
+    {previousGrad.map((person) => (
+      <article class="person">
         <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
         <div>
           <h3>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h3>
           <p>{person.role}</p>
-          {person.extra && <a href={person.extra.href}>{person.extra.label}</a>}
+          {person.extra && <a class="extra" href={person.extra.href}>{person.extra.label}</a>}
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <h2 class="section-heading">Former Undergraduates</h2>
+  <section class="people-grid" aria-label="Former undergraduates">
+    {previousUndergrad.map((person) => (
+      <article class="person">
+        <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
+        <div>
+          <h3>{person.name}</h3>
+          <p>{person.role}</p>
         </div>
       </article>
     ))}
@@ -57,14 +73,81 @@ const media = (filename: string) => `${base}media/${filename}`;
 </BaseLayout>
 
 <style>
-  .people-grid { display: grid; gap: 2rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .person-card { background: #373737; min-height: 410px; padding: 2rem 1.25rem; text-align: center; }
-  .person-card img { aspect-ratio: 1; border-radius: 50%; height: auto; margin: 0 auto 1.5rem; object-fit: cover; width: min(100%, 210px); }
-  .person-card h2, .person-card h3 { font-size: 1.25rem; margin-bottom: 0.55rem; }
-  .person-card p { color: #d0cecf; font-size: 0.92rem; margin-bottom: 0.55rem; }
-  .email { font-size: 0.82rem; overflow-wrap: anywhere; }
-  .section-heading { margin: 6rem 0 1.5rem; text-align: center; }
-  .previous { min-height: 380px; }
-  @media (max-width: 760px) { .people-grid { gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 460px) { .people-grid { grid-template-columns: 1fr; } .person-card { min-height: 0; } }
+  .people-grid {
+    display: grid;
+    gap: 2.6rem 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .person {
+    text-align: center;
+  }
+
+  .person img {
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    height: auto;
+    margin: 0 auto 1.1rem;
+    object-fit: cover;
+    width: min(100%, 190px);
+  }
+
+  .person h2,
+  .person h3 {
+    font-size: 1.12rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .person h2 a,
+  .person h3 a {
+    text-decoration: none;
+  }
+
+  .person h2 a:hover,
+  .person h3 a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .person p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .email,
+  .extra {
+    color: var(--gold);
+    font-size: 0.8rem;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+
+  .email:hover,
+  .extra:hover {
+    text-decoration: underline;
+  }
+
+  .section-heading {
+    border-bottom: 3px solid var(--band);
+    font-size: 1.5rem;
+    margin: clamp(3.5rem, 8vw, 5rem) 0 1.8rem;
+    padding-bottom: 0.55rem;
+  }
+
+  @media (max-width: 760px) {
+    .people-grid {
+      gap: 2rem 1.2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 460px) {
+    .people-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

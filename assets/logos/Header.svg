@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 427.7 125.5" style="enable-background:new 0 0 427.7 125.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#231F20;}
+	.st1{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:4;}
+	.st2{fill:none;stroke:#FFFFFF;stroke-width:6;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#FFFFFF;stroke-width:1.35;stroke-miterlimit:10;}
+	.st4{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:4;stroke-miterlimit:10;}
+	.st5{fill:none;}
+</style>
+<title>Header</title>
+<rect class="st0" width="427.7" height="125.5"/>
+<path class="st1" d="M31.5,32.6H36v24.3h33.4V32.6h4.5v56h-4.5V61.1H36v27.5h-4.5V32.6z"/>
+<circle class="st2" cx="148.4" cy="67.4" r="20.2"/>
+<path class="st1" d="M169.8,32.6h18.6c15.4,0,26,10.7,26,27.5S204,88.6,188.3,88.6h-18.5V32.6z M174.3,84.5h13.4
+	c14.7,0,21.9-10.3,21.9-24.1c0-12.3-6.5-23.6-21.9-23.6h-13.4L174.3,84.5z"/>
+<path class="st1" d="M260.4,32.4h4.5v51.9h30l-0.8,4.1h-33.7V32.4z"/>
+<path class="st1" d="M312.7,69.2l-7.1,19.2h-4.6l20.5-56h5.3l21.4,56h-4.9l-7.2-19.2L312.7,69.2z M334.8,65.1
+	c-6.2-16.5-9.4-24.5-10.5-28.3h-0.1c-1.4,4.3-4.9,14.2-9.9,28.3H334.8z"/>
+<path class="st1" d="M358.2,32.4h19.6c10.8,0,16.5,5.7,16.5,13.8c0,6.6-4,11-8.6,12.2c4,1.1,10.6,5,10.6,13.8
+	c0,11.2-8.4,16.2-18.2,16.2h-20V32.4z M376.4,56.4c9.6,0,13.2-3.6,13.2-10c0-5.5-3.8-9.9-11.6-9.9h-15.4v20L376.4,56.4z M362.6,84.3
+	h15.6c7.3,0,13.4-3.7,13.4-11.8c0-7.1-4.5-11.9-15.7-11.9h-13.4V84.3z"/>
+<circle class="st2" cx="101.4" cy="62.3" r="25.3"/>
+<ellipse class="st3" cx="101.4" cy="61.2" rx="10.4" ry="19.9"/>
+<ellipse transform="matrix(0.5 -0.866 0.866 0.5 -2.2521 118.3954)" class="st3" cx="101.4" cy="61.1" rx="10.4" ry="19.9"/>
+<ellipse transform="matrix(0.866 -0.5 0.5 0.866 -16.9871 58.8981)" class="st3" cx="101.4" cy="61.1" rx="19.9" ry="10.4"/>
+<circle class="st4" cx="101.4" cy="61.2" r="4.1"/>
+<rect x="29.3" y="30.5" class="st5" width="369.1" height="89.3"/>
+<line class="st5" x1="29.3" y1="90.5" x2="398.4" y2="90.5"/>
+</svg>
