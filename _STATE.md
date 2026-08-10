@@ -1,5 +1,42 @@
 # Hood Lab Website State
 
+## 2026-08-10 (evening) — Home intro + Li–Cs text live
+
+- Jonathan wrote the home intro himself (dictated, Claude edited): goal
+  line ("understand and control the interactions between light and
+  quantum emitters"), two-platform line, then a paragraph each on atoms
+  and molecules, with colloidal quantum dots folded onto the end of the
+  molecules paragraph (his chosen option 3 of 3). Source material: his
+  tenure letter-writer research statement at
+  `Purdue/Admin/Tenure/letter_writer_packet/research_statement_v2.md`
+  plus the abstracts/intros of all 21 papers.
+- Li–Cs research section: Claude wrote a SHORT first pass at Jonathan's
+  request ("make it short, I will edit it later") — tweezer platform +
+  the photon-budget challenge, then Li 99.95% imaging, the unified
+  cooling theory, the Cs quadrupole line and vortex-beam OAM, and
+  current work toward light collection and a nanophotonic interface.
+  He intends to rewrite it.
+- STILL PLACEHOLDER AND NOW PUBLIC: Theory and Colloidal Quantum Dots
+  section text (Claude drafts, gold DRAFT COPY chips visible) and the
+  Theses champagne caption. He knows; go-live was his call.
+
+## 2026-08-10 — REDESIGN IS LIVE
+
+- Jonathan said "commit and push everything." Done: commit 5f43caf on
+  main (handbook branch fast-forwarded in and deleted local+remote),
+  Pages deploy succeeded, production verified (routes, new media,
+  signature, favicon all 200; home shows the new timeline).
+- KNOWINGLY LIVE WITH PLACEHOLDERS: home welcome ("Text to be added."),
+  Li–Cs research section placeholder, Theory/QD DRAFT chips, Claude's
+  Theses caption. Jonathan's text pass tomorrow replaces these; wire his
+  words in and push again.
+- Committed per his instruction, with one standing-policy exception:
+  `paper-assets/**/page1-journal.png` (18 bulk publisher-page renders)
+  are gitignored — regenerable via the proxy route; the 9 page images
+  the site uses shipped in public/media with his explicit approval.
+- After the text pass: consider re-crediting the quadrupole Publications
+  entry with its full citation (PRA 112, 043109 (2025)).
+
 ## 2026-08-10 — Session close; Jonathan's text pass is next (tomorrow)
 
 - Decision: "Lab life" photo gallery goes at the BOTTOM of the Team page

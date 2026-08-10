@@ -21,7 +21,29 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
       />
     </figure>
     <h1>Welcome to the Hood Lab at Purdue!</h1>
-    <p class="lede placeholder">Text to be added.</p>
+    <p class="lede">
+      Our goal is to understand and control the interactions between light and quantum emitters.
+    </p>
+    <p class="lede">
+      We work with two platforms: single atoms held in optical tweezers, and single organic
+      molecules cooled inside a crystal. In both, we are working toward better quantum control
+      of the emitters.
+    </p>
+    <p class="lede">
+      With the atoms, trapped in arrays of optical tweezers, we have worked on understanding
+      cooling in lithium and cesium and on characterizing a narrow line in cesium. We are now
+      working on efficient ways to collect the light they emit, on studying collective effects,
+      and on building toward a nanophotonic interface.
+    </p>
+    <p class="lede">
+      With the molecules, we have introduced new ways of integrating emitters with integrated
+      photonics. We are working toward two things: generating highly pure photons that can be
+      used for entanglement distribution, and studying the fundamental collective interactions
+      between emitters, including how they can be used to generate multi-photon states, how to
+      characterize those states, and what they are useful for in quantum information science.
+      We are now extending these same questions to colloidal quantum dots, a second chemically
+      synthesized emitter, where our first paper is on its way.
+    </p>
   </section>
 
   <section class="news">
@@ -55,7 +77,11 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
   .lede {
     color: var(--muted);
     font-size: 1.01rem;
-    margin: 0;
+    margin: 0 0 1rem;
+  }
+
+  .lede:last-of-type {
+    margin-bottom: 0;
   }
 
   .placeholder {

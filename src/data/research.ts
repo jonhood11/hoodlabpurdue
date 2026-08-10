@@ -24,8 +24,12 @@ export const AREAS: ResearchArea[] = [
     short: "",
     images: [],
     alt: "Lithium and cesium atoms in optical tweezers",
-    // Jonathan will write this section himself; the page shows a placeholder.
-    paragraphs: [],
+    // Short first pass, drawn from the home-page text and the papers below.
+    // Jonathan plans to edit this himself.
+    paragraphs: [
+      "We trap single lithium and cesium atoms in arrays of optical tweezers and study the light-atom interactions that govern their trapping, cooling, and imaging. An atom in a tweezer can scatter only a few hundred photons before it is lost, which makes precise control of atomic motion the central challenge.",
+      "With lithium we demonstrated repeated imaging with 99.95% survival, a benchmark for low-loss imaging of neutral atoms in tweezers, and that work led to a unified theory of laser cooling for tightly trapped atoms. With cesium we introduced a narrow electric-quadrupole line for cooling and background-free imaging, and showed that it can be driven by the orbital angular momentum of a vortex beam. We are now working on efficient ways to collect the light the atoms emit, on collective effects, and on building toward a nanophotonic interface.",
+    ],
   },
   {
     key: "dbt",
