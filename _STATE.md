@@ -16,9 +16,12 @@
   cooling theory, the Cs quadrupole line and vortex-beam OAM, and
   current work toward light collection and a nanophotonic interface.
   He intends to rewrite it.
-- STILL PLACEHOLDER AND NOW PUBLIC: Theory and Colloidal Quantum Dots
-  section text (Claude drafts, gold DRAFT COPY chips visible) and the
-  Theses champagne caption. He knows; go-live was his call.
+- Theses caption deleted at his request ("that is lame") — the page now
+  shows just the "Our Graduation Count!" heading beside the champagne
+  photo. Dead `.count-copy p` style removed with it. Live in eec8071.
+- STILL PLACEHOLDER AND PUBLIC: Theory and Colloidal Quantum Dots
+  section text only (Claude drafts, gold DRAFT COPY chips visible).
+  He knows; go-live was his call. These are the last two writing slots.
 
 ## 2026-08-10 — REDESIGN IS LIVE
 
