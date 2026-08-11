@@ -12,7 +12,7 @@ Congratulations to Emma Daggett and the entire team! Our review article on many-
 
   
 
-E Daggett, CM Lange, B Windt, A Danageozian, A Senichev, et al., JD Hood, "Many-body entanglement in solid-state quantum emitters," Nature Reviews Materials, 1-21 (2025).
+E Daggett, CM Lange, B Windt, A Danageozian, A Senichev, et al., JD Hood, "Many-body entanglement in solid-state emitters," Nature Reviews Materials 11, 354–374 (2026).
 
   
 

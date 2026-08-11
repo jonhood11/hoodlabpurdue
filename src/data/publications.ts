@@ -46,7 +46,7 @@ export const PUBS: Pub[] = [
       "A Hybrid Molecular–Nanophotonic Platform for On-Chip Cavity Quantum Electrodynamics and Collective Interactions",
     authors:
       "Christian M. Lange, Arya D. Keni, Ishita Agarwal, Emma Daggett, Adhyyan S. Mansukhani, Ankit Kundu, Benjamin Cerjan, Libai Huang, Jonathan D. Hood",
-    venue: { label: "ACS Nano (2026)" },
+    venue: { label: "ACS Nano 20, 9867–9874 (2026)" },
     arxiv: "https://arxiv.org/abs/2506.01917",
     thumb: "/media/dfd400_da2e1124868a4305860bc2eab55a832e~mv2.png",
     area: "dbt",
@@ -57,7 +57,7 @@ export const PUBS: Pub[] = [
     authors:
       "Emma Daggett, Christian M. Lange, Bennet Windt, Arshag Danageozian, Alexander Senichev, Jordi Arnau Montañà-López, Chanchal, Kinjol Barua, Xingyu Gao, Zhaoyun Zheng, Vijin Kizhake Veetil, Souvik Biswas, Jonas M. Peterson, Na Liu, Chuchuan Hong, Teri Odom, Matthew Pelton, Tongcang Li, Jelena Vučković, Vladimir M. Shalaev, Alexandra Boltasseva, Sophia E. Economou, Jonathan D. Hood, Valentin Walther, Rahul Trivedi, Libai Huang",
     venue: {
-      label: "Nature Reviews Materials",
+      label: "Nature Reviews Materials 11, 354–374 (2026)",
       href: "https://www.nature.com/articles/s41578-026-00893-8",
     },
     thumb: "/media/dfd400_6bc032ea9e9d412295cf3822d6bab716~mv2.png",
@@ -70,7 +70,7 @@ export const PUBS: Pub[] = [
     authors:
       "Karl N. Blodgett*, Saumitra S. Phatak*, Meng Raymond Chen, David Peana, Claire Pritts, and Jonathan D. Hood",
     venue: {
-      label: "Phys. Rev. A",
+      label: "Phys. Rev. A 112, 043109 (2025)",
       href: "https://journals.aps.org/pra/abstract/10.1103/vr4g-h995",
     },
     arxiv: "https://arxiv.org/abs/2505.10540v1",
@@ -97,7 +97,7 @@ export const PUBS: Pub[] = [
       "Superradiant and subradiant states in lifetime-limited organic molecules through laser-induced tuning",
     authors: "Christian Lange, Emma Daggett, Valentin Walther, Libai Huang, Jonathan D. Hood",
     venue: {
-      label: "Nature Physics (2024)",
+      label: "Nature Physics 20, 836 (2024)",
       href: "https://doi.org/10.1038/s41567-024-02404-4",
     },
     arxiv: "https://arxiv.org/pdf/2308.08037.pdf",
@@ -177,7 +177,7 @@ export const PUBS: Pub[] = [
     authors: "LR Liu, JD Hood, YC Yu, JT Zhang, NR Hutzler, T Rosenband, and K-K Ni",
     venue: {
       label: "Science (cover), 360(6391), 900–903 (2018)",
-      href: "https://science.sciencemag.org/content/360/6391/900",
+      href: "https://doi.org/10.1126/science.aar7797",
     },
     arxiv: "https://arxiv.org/abs/1804.04752",
     note: "Science cover",
@@ -211,7 +211,7 @@ export const PUBS: Pub[] = [
     authors: "JD Hood, A Goban, A Asenjo-Garcia, M Lu, S-P Yu, DE Chang, and HJ Kimble",
     venue: {
       label: "PNAS 113(38), 10507–10512 (2016)",
-      href: "https://www.pnas.org/content/113/38/10507",
+      href: "https://doi.org/10.1073/pnas.1603788113",
     },
     // Corrected 2026-08-10: the Wix site carried the Green's-function paper's arXiv id here.
     arxiv: "https://arxiv.org/abs/1603.02771",
@@ -246,7 +246,7 @@ export const PUBS: Pub[] = [
       "S-P Yu†, JD Hood†, JA Muniz, MJ Martin, R Norte, C-L Hung, SM Meenehan, JD Cohen, O Painter, and HJ Kimble",
     venue: {
       label: "Applied Physics Letters 104(11), 111103 (2014)",
-      href: "https://aip.scitation.org/doi/full/10.1063/1.4868975",
+      href: "https://doi.org/10.1063/1.4868975",
     },
     arxiv: "https://arxiv.org/abs/1402.1147",
   },

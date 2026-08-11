@@ -7,6 +7,9 @@ const expectedBase = process.argv[3] || "/";
 const htmlFiles = await collectHtml(outputDir);
 const errors = [];
 const expectedRoutes = new Set(["/", "/blank-6", "/blog", "/links", "/publications", "/research", "/team", "/theses"]);
+// Pages added deliberately after the Wix migration. They are excluded from the
+// count comparison below so that it keeps guarding the legacy routes only.
+const intentionalExtras = new Set(["/404.html"]);
 
 for (const file of await readdir("src/content/news")) {
   if (!file.endsWith(".md")) continue;
@@ -70,8 +73,9 @@ for (const file of htmlFiles) {
   }
 }
 
-if (builtRoutes.size !== expectedRoutes.size) {
-  errors.push(`Route count differs: built ${builtRoutes.size}, expected ${expectedRoutes.size}`);
+const builtLegacyRoutes = new Set([...builtRoutes].filter((route) => !intentionalExtras.has(route)));
+if (builtLegacyRoutes.size !== expectedRoutes.size) {
+  errors.push(`Route count differs: built ${builtLegacyRoutes.size}, expected ${expectedRoutes.size}`);
 }
 
 if (errors.length) {
