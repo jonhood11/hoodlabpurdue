@@ -12,7 +12,6 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
   <section class="count">
     <div class="count-copy">
       <h2>{COUNT_HEADING}</h2>
-      <p>One bottle for every defense — the shelf keeps growing.</p>
     </div>
     <img class="champagne" src={withBase(CHAMPAGNE)} alt="Champagne bottles from thesis defenses" />
   </section>
@@ -43,11 +42,6 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
   .count h2 {
     font-size: 1.4rem;
     font-weight: 600;
-    margin: 0 0 0.6rem;
-  }
-
-  .count-copy p {
-    color: var(--muted);
     margin: 0;
   }
 
