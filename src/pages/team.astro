@@ -1,82 +1,51 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const current = [
-  { name: "Jonathan Hood, PhD", role: "PI", email: "hoodjd@purdue.edu", image: "dfd400_c0d6506fa1de44dcb55b5f3a5889bbf2~mv2.jpg", scholar: "https://scholar.google.com/citations?user=-Rkv_5EAAAAJ&hl=en&oi=ao" },
-  { name: "Christian Lange", role: "Post-doc", email: "lange50@purdue.edu", image: "dfd400_6fa00e6f312e4db99d620dc6e886f4fb~mv2.jpg", scholar: "https://scholar.google.com/citations?user=ucO89aIAAAAJ&hl=en&oi=sra" },
-  { name: "Emma Daggett", role: "Graduate Student", email: "edaggett@purdue.edu", image: "dfd400_90a3618c58d74d5380b2a6569986a61a~mv2.jpg", scholar: "https://scholar.google.com/citations?hl=en&user=r-es_GUAAAAJ" },
-  { name: "Meng (Raymond) Chen", role: "Graduate Student", email: "chen3221@purdue.edu", image: "dfd400_7b2e81726dbf4f418c282c2499fc6065~mv2.jpg", scholar: "https://scholar.google.com/citations?user=UJWaY0sAAAAJ&hl=zh-CN" },
-  { name: "Ankit Kundu", role: "Graduate Student", email: "kundu16@purdue.edu", image: "dfd400_8d70ebe7c646494c9757c4779e1c451a~mv2.jpg", scholar: "https://scholar.google.com/citations?user=KWO7xv8AAAAJ&hl=en" },
-  { name: "Arya Keni", role: "Graduate Student", email: "keni1@purdue.edu", image: "dfd400_b78c8b237abe418b86dbaf9666e25587~mv2.jpg", scholar: "https://scholar.google.com/citations?user=fd6IpOUAAAAJ&hl=en" },
-  { name: "Ishita Agarwal", role: "Graduate Student", email: "agarw493@purdue.edu", image: "dfd400_366a138b751e454cbbf44adfa3c74681~mv2.jpg", scholar: "https://scholar.google.com/citations?user=mT1JyfcAAAAJ&hl=en" },
-  { name: "Adhyyan Mansukhani", role: "Graduate Student", email: "amansuk@purdue.edu", image: "dfd400_ca10a4f33e68450b8c686dba9bbfd801~mv2.jpg", scholar: "https://scholar.google.com/citations?hl=en&authuser=1&user=a9ZVJOgAAAAJ" },
-  { name: "Sai Seshank Bandaru", role: "Graduate Student", email: "bandaru2@purdue.edu", image: "dfd400_75c36b9aebc8429f85ce4928911ce92a~mv2.jpeg" },
-];
-
-const previousGrad = [
-  { name: "David Peana, PhD", role: "First graduate student of the lab — now at Argonne National Laboratory", image: "dfd400_72a31c08231248a7910fcb63409ffe91~mv2.jpg" },
-  { name: "Saumitra Phatak, PhD", role: "Now at Atom Computing", image: "dfd400_7986e4104e0f4e69bf61299da3408818~mv2.jpg", scholar: "https://scholar.google.com/citations?user=sFSr0coAAAAJ&hl=en&oi=ao", extra: { label: "AMO Toolkit", href: "https://amotoolkit.com/home.html" } },
-  { name: "Karl Blodgett, PhD", role: "Post-doc — now at Quantinuum", image: "dfd400_6c4549a56fa74189a8469ffb75120888~mv2.jpg" },
-];
-
-const previousUndergrad = [
-  { name: "Maria Paula Montes Bejarano", role: "International Scholar", image: "dfd400_34abc86b4f084322ae5651cb7c95d47a~mv2.jpg" },
-  { name: "Luke Lampkins", role: "Undergraduate", image: "dfd400_f32b413aa3054d3e8b6de10760cd034b~mv2.jpg" },
-  { name: "Lane Terry", role: "Undergraduate", image: "dfd400_2c4a2fad242a4878be66dc528d6aa30d~mv2.jpg" },
-];
+import { current, previousGrad, previousUndergrad } from "../data/team";
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 const media = (filename: string) => `${base}media/${filename}`;
+
+// The first group's heading is visually hidden: the "Team" h1 already labels it,
+// but keeping the heading preserves h1 > h2 > h3 order for screen readers.
+// Current members have short titles ("PI", "Graduate Student"), which suit the
+// gold kicker above the name. Former members' roles are sentences about where
+// they went, so they read as a note under the name instead.
+const groups = [
+  { title: "Current members", hidden: true, kicker: true, people: current },
+  { title: "Previous Graduate Students & Postdocs", hidden: false, kicker: false, people: previousGrad },
+  { title: "Former Undergraduates", hidden: false, kicker: false, people: previousUndergrad },
+];
 ---
 
 <BaseLayout title="Team | Hood Lab" description="Current and former members of the Hood Lab at Purdue University.">
   <h1 class="page-heading">Team</h1>
-  <section class="people-grid" aria-label="Current Hood Lab members">
-    {current.map((person) => (
-      <article class="person">
-        <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
-        <div>
-          <h2>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h2>
-          <p>{person.role}</p>
-          <a class="email" href={`mailto:${person.email}`}>{person.email}</a>
-        </div>
-      </article>
-    ))}
-  </section>
 
-  <h2 class="section-heading">Previous Graduate Students &amp; Postdocs</h2>
-  <section class="people-grid" aria-label="Previous graduate students and postdocs">
-    {previousGrad.map((person) => (
-      <article class="person">
-        <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
-        <div>
-          <h3>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h3>
-          <p>{person.role}</p>
-          {person.extra && <a class="extra" href={person.extra.href}>{person.extra.label}</a>}
-        </div>
-      </article>
-    ))}
-  </section>
-
-  <h2 class="section-heading">Former Undergraduates</h2>
-  <section class="people-grid" aria-label="Former undergraduates">
-    {previousUndergrad.map((person) => (
-      <article class="person">
-        <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
-        <div>
-          <h3>{person.name}</h3>
-          <p>{person.role}</p>
-        </div>
-      </article>
-    ))}
-  </section>
+  {groups.map((group) => (
+    <section aria-label={group.title}>
+      <h2 class:list={[group.hidden ? "sr-only" : "section-heading"]}>{group.title}</h2>
+      <div class="people-grid">
+        {group.people.map((person) => (
+          <article class="person">
+            <img src={media(person.image)} alt={`Portrait of ${person.name}`} loading="lazy" />
+            {group.kicker && <p class="role">{person.role}</p>}
+            <h3>{person.scholar ? <a href={person.scholar}>{person.name}</a> : person.name}</h3>
+            {!group.kicker && <p class="note">{person.role}</p>}
+            {person.email && (
+              <a class="email" href={`mailto:${person.email}`}>{person.email}</a>
+            )}
+            {person.extra && <a class="email" href={person.extra.href}>{person.extra.label}</a>}
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
 </BaseLayout>
 
 <style>
   .people-grid {
     display: grid;
-    gap: 2.6rem 2rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem 1.6rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .person {
@@ -88,66 +57,78 @@ const media = (filename: string) => `${base}media/${filename}`;
     border: 1px solid var(--line);
     border-radius: 50%;
     height: auto;
-    margin: 0 auto 1.1rem;
+    margin: 0 auto 0.9rem;
     object-fit: cover;
-    width: min(100%, 190px);
+    transition: border-color 160ms ease, transform 160ms ease;
+    width: min(100%, 160px);
   }
 
-  .person h2,
-  .person h3 {
-    font-size: 1.12rem;
+  .person:hover img {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .role {
+    color: var(--gold);
+    font-size: 0.68rem;
     font-weight: 600;
-    margin-bottom: 0.25rem;
+    letter-spacing: 0.14em;
+    margin: 0 0 0.15rem;
+    text-transform: uppercase;
   }
 
-  .person h2 a,
+  .person h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+  }
+
   .person h3 a {
     text-decoration: none;
   }
 
-  .person h2 a:hover,
   .person h3 a:hover {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
 
-  .person p {
+  .note {
     color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    margin: 0 0 0.2rem;
   }
 
-  .email,
-  .extra {
-    color: var(--gold);
-    font-size: 0.8rem;
+  .email {
+    color: var(--muted);
+    display: block;
+    font-size: 0.78rem;
     overflow-wrap: anywhere;
     text-decoration: none;
   }
 
-  .email:hover,
-  .extra:hover {
-    text-decoration: underline;
+  .email:hover {
+    color: var(--gold);
   }
 
   .section-heading {
     border-bottom: 3px solid var(--band);
-    font-size: 1.5rem;
-    margin: clamp(3.5rem, 8vw, 5rem) 0 1.8rem;
-    padding-bottom: 0.55rem;
+    font-size: 1.4rem;
+    margin: 3.4rem 0 1.8rem;
+    padding-bottom: 0.5rem;
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 860px) {
     .people-grid {
-      gap: 2rem 1.2rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 460px) {
+  @media (max-width: 620px) {
     .people-grid {
-      grid-template-columns: 1fr;
+      gap: 2rem 1.2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>

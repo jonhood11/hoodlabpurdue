@@ -1,0 +1,35 @@
+// The lab's people. Shared by the Team page (and any layout mockups) so the
+// list lives in one place, like publications.ts, theses.ts and research.ts.
+
+export interface Person {
+  name: string;
+  role: string;
+  email?: string;
+  image: string;
+  scholar?: string;
+  extra?: { label: string; href: string };
+}
+
+export const current: Person[] = [
+  { name: "Jonathan Hood, PhD", role: "PI", email: "hoodjd@purdue.edu", image: "dfd400_c0d6506fa1de44dcb55b5f3a5889bbf2~mv2.jpg", scholar: "https://scholar.google.com/citations?user=-Rkv_5EAAAAJ&hl=en&oi=ao" },
+  { name: "Christian Lange", role: "Post-doc", email: "lange50@purdue.edu", image: "dfd400_6fa00e6f312e4db99d620dc6e886f4fb~mv2.jpg", scholar: "https://scholar.google.com/citations?user=ucO89aIAAAAJ&hl=en&oi=sra" },
+  { name: "Emma Daggett", role: "Graduate Student", email: "edaggett@purdue.edu", image: "dfd400_90a3618c58d74d5380b2a6569986a61a~mv2.jpg", scholar: "https://scholar.google.com/citations?hl=en&user=r-es_GUAAAAJ" },
+  { name: "Meng (Raymond) Chen", role: "Graduate Student", email: "chen3221@purdue.edu", image: "dfd400_7b2e81726dbf4f418c282c2499fc6065~mv2.jpg", scholar: "https://scholar.google.com/citations?user=UJWaY0sAAAAJ&hl=zh-CN" },
+  { name: "Ankit Kundu", role: "Graduate Student", email: "kundu16@purdue.edu", image: "dfd400_8d70ebe7c646494c9757c4779e1c451a~mv2.jpg", scholar: "https://scholar.google.com/citations?user=KWO7xv8AAAAJ&hl=en" },
+  { name: "Arya Keni", role: "Graduate Student", email: "keni1@purdue.edu", image: "dfd400_b78c8b237abe418b86dbaf9666e25587~mv2.jpg", scholar: "https://scholar.google.com/citations?user=fd6IpOUAAAAJ&hl=en" },
+  { name: "Ishita Agarwal", role: "Graduate Student", email: "agarw493@purdue.edu", image: "dfd400_366a138b751e454cbbf44adfa3c74681~mv2.jpg", scholar: "https://scholar.google.com/citations?user=mT1JyfcAAAAJ&hl=en" },
+  { name: "Adhyyan Mansukhani", role: "Graduate Student", email: "amansuk@purdue.edu", image: "dfd400_ca10a4f33e68450b8c686dba9bbfd801~mv2.jpg", scholar: "https://scholar.google.com/citations?hl=en&authuser=1&user=a9ZVJOgAAAAJ" },
+  { name: "Sai Seshank Bandaru", role: "Graduate Student", email: "bandaru2@purdue.edu", image: "dfd400_75c36b9aebc8429f85ce4928911ce92a~mv2.jpeg" },
+];
+
+export const previousGrad: Person[] = [
+  { name: "David Peana, PhD", role: "First graduate student of the lab — now at Argonne National Laboratory", image: "dfd400_72a31c08231248a7910fcb63409ffe91~mv2.jpg" },
+  { name: "Saumitra Phatak, PhD", role: "Now at Atom Computing", image: "dfd400_7986e4104e0f4e69bf61299da3408818~mv2.jpg", scholar: "https://scholar.google.com/citations?user=sFSr0coAAAAJ&hl=en&oi=ao", extra: { label: "AMO Toolkit", href: "https://amotoolkit.com/home.html" } },
+  { name: "Karl Blodgett, PhD", role: "Post-doc — now at Quantinuum", image: "dfd400_6c4549a56fa74189a8469ffb75120888~mv2.jpg" },
+];
+
+export const previousUndergrad: Person[] = [
+  { name: "Maria Paula Montes Bejarano", role: "International Scholar", image: "dfd400_34abc86b4f084322ae5651cb7c95d47a~mv2.jpg" },
+  { name: "Luke Lampkins", role: "Undergraduate", image: "dfd400_f32b413aa3054d3e8b6de10760cd034b~mv2.jpg" },
+  { name: "Lane Terry", role: "Undergraduate", image: "dfd400_2c4a2fad242a4878be66dc528d6aa30d~mv2.jpg" },
+];
