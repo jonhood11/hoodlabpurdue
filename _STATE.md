@@ -1,5 +1,38 @@
 # Hood Lab Website State
 
+## 2026-08-10 (night) — Full site review, fixes shipped, Team relaid out
+
+Reviewed every page, all 97 external links, and real page weights. Fixed
+and pushed (445ff7e, 79d6b6f), all verified in production:
+
+- **Images.** Home 8.2 -> 2.8 MB, Team 11.9 -> 1.6 MB, News 27.5 -> 14.6 MB,
+  media dir 55 -> 31 MB. Hero 5.35 -> 0.69 MB. Three team portraits were
+  12-megapixel PNGs shown as 190px circles; converted to JPEG and resized
+  (filenames changed .png -> .jpg, references updated). GIFs kept all
+  frames (236 in the Cs one) at 64 colours. Originals backed up in the
+  session scratchpad `media-backup/`; script `optimize_media.sh`.
+- **Citations.** Filled in ACS Nano 20, 9867–9874 (2026); Nat. Rev. Mater.
+  11, 354–374 (2026); Phys. Rev. A 112, 043109 (2025); Nature Physics 20,
+  836 (2024) — the only incomplete entries. Review news post moved from
+  early-access to the published citation, title corrected. Legacy
+  sciencemag/pnas/aip URLs replaced with DOIs.
+- **robots.txt**, a styled **404** (returns a real 404 status), and a real
+  home meta description from Jonathan's intro.
+- **verify-build.mjs** now excludes `intentionalExtras` (`/404.html`) from
+  the route-count guard; the legacy-route guarantee still fails correctly
+  if a Wix route disappears (tested by deleting one).
+- **Team**: Jonathan picked layout A of three mockups. 4-up circles, gold
+  role kicker above the name, hover lift. Former members' roles render as
+  prose under the name instead (they are sentences, not titles). People
+  data extracted to `src/data/team.ts`. Heading order now h1>h2>h3 with an
+  sr-only heading for the current group. Mockups deleted before pushing.
+
+Known remaining (not blocking): News page still ~14.6 MB dominated by the
+3.8 MB Cs-atom GIF (lazy-loaded); `/links` (stale Fall 2022 seminar) and
+`/blank-6` (Open Positions, ugly Wix URL) are orphans nothing links to;
+`/blog` heading order still jumps h1->h3 (NewsTimeline emits h3 with no h2
+above it on that page); Theory and Colloidal Quantum Dots still DRAFT.
+
 ## 2026-08-10 (evening) — Home intro + Li–Cs text live
 
 - Jonathan wrote the home intro himself (dictated, Claude edited): goal
